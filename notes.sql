@@ -1,21 +1,21 @@
 ```
 
-create database notes;
+CREATE DATABASE notes;
 
-use notes;
+USE notes;
 
-drop table if exists users;
+DROP TABLE IF EXISTS users;
 
-create table users (id int primary key not null auto_increment, pseudo varchar(30), pw varchar(256), rang int default 0);
+CREATE TABLE users (id INT PRIMARY KEY NOT NULL AUTO_INCREMENT, pseudo VARCHAR(30), pw VARCHAR(256), rang INT DEFAULT 0);
 
-insert into users (pseudo, pw, rang) values ('admin', 'admin', 1);
-insert into users (pseudo, pw) values ('Mehdi', '0000');
+INSERT INTO users (pseudo, pw, rang) VALUES ('admin', '21232f297a57a5a743894a0e4a801fc3', 1);
+INSERT INTO users (pseudo, pw) VALUES ('Mehdi', '4a7d1ed414474e4033ac29ccb8653d9b');
 
-drop table if exists notes;
+DROP TABLE IF EXISTS notes;
 
-create table notes (id int primary key not null auto_increment, titre varchar(256), description varchar(512), epingle int, dateCreation date, dateRappel date);
+CREATE TABLE notes (id INT PRIMARY KEY NOT NULL AUTO_INCREMENT, titre VARCHAR(256), description VARCHAR(512), epingle INT, dateCreation DATE, dateRappel DATE);
 
-insert into notes (titre, description, epingle, dateCreation, dateRappel) values ('Courses', 'Acheter de la viande et des légumes', 1, NOW(), '2022-01-03');
-insert into notes (titre, description, epingle, dateCreation, dateRappel) values ('Remboursement', 'Rembourser le meuble', 0, NOW(), NULL);
+INSERT INTO notes (titre, description, epingle, dateCreation, dateRappel) VALUES ('Courses', 'Acheter de la viande et des légumes', 1, NOW(), '2022-01-03');
+INSERT INTO notes (titre, description, epingle, dateCreation, dateRappel) VALUES ('Remboursement', 'Rembourser le meuble', 0, NOW(), NULL);
 
 ```
