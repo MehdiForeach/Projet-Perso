@@ -21,7 +21,10 @@
                                         chaine += "<h2>"+ligne['titre']+"</h2>";
                                         chaine += "<h3>"+ligne['description']+"</h3>";
                                         chaine += "<div class='dateCreation'><p>"+ligne['dateCreation']+"</p></div>";
-                                        chaine += "</div>";
+                                        if(ligne['dateRappel'] != null)
+                                          chaine += "<div class='dateRappel'><p>Rappel : "+ligne['dateRappel']+"</p></div></div>";
+                                        else
+                                          chaine += "</div>";
                                       }
 
                                       $( "#notesSimple" ).append( chaine );
@@ -41,7 +44,10 @@
                                         chaine += "<h2>"+ligne['titre']+"</h2>";
                                         chaine += "<h3>"+ligne['description']+"</h3>";
                                         chaine += "<div class='dateCreation'><p>"+ligne['dateCreation']+"</p></div>";
-                                        chaine += "</div>";
+                                        if(ligne['dateRappel'] != null)
+                                          chaine += "<div class='dateRappel'><p>Rappel : "+ligne['dateRappel']+"</p></div></div>";
+                                        else
+                                          chaine += "</div>";
                                       }
 
                                       $( "#notesEpingle" ).append( chaine );
