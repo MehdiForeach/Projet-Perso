@@ -12,19 +12,19 @@
                                     function( data, status )
                                     {
                                       let tableau = JSON.parse( data );
-                                      // console.log( tableau );
+                                       console.log( tableau );
                                       let chaine = "";
 
                                       for ( ligne of tableau )
                                       {
-                                        chaine += "<div class='tacheSimple'>";
+                                        chaine += "<a href='note.php?id="+ligne['id']+"'><div class='tacheSimple'>";
                                         chaine += "<h2>"+ligne['titre']+"</h2>";
                                         chaine += "<h3>"+ligne['description']+"</h3>";
                                         chaine += "<div class='dateCreation'><p>"+ligne['dateCreation']+"</p></div>";
                                         if(ligne['dateRappel'] != null)
                                           chaine += "<div class='dateRappel'><p>Rappel : "+ligne['dateRappel']+"</p></div></div>";
                                         else
-                                          chaine += "</div>";
+                                          chaine += "</div></a>";
                                       }
 
                                       $( "#notesSimple" ).append( chaine );
@@ -40,14 +40,14 @@
 
                                       for ( ligne of tableau )
                                       {
-                                        chaine += "<div class='tacheEpingle'>";
+                                        chaine += "<a href='note.php?id="+ligne['id']+"'><div class='tacheEpingle'>";
                                         chaine += "<h2>"+ligne['titre']+"</h2>";
                                         chaine += "<h3>"+ligne['description']+"</h3>";
                                         chaine += "<div class='dateCreation'><p>"+ligne['dateCreation']+"</p></div>";
                                         if(ligne['dateRappel'] != null)
                                           chaine += "<div class='dateRappel'><p>Rappel : "+ligne['dateRappel']+"</p></div></div>";
                                         else
-                                          chaine += "</div>";
+                                          chaine += "</div></a>";
                                       }
 
                                       $( "#notesEpingle" ).append( chaine );
