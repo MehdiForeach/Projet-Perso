@@ -29,7 +29,7 @@
                 while ( $ligne = $res->fetch_assoc())
                     $tableauData[] = $ligne;
 
-                    echo "<div class='tacheEpingle'>";
+                    echo "<div id='$idNote' class='tache'>";
                     echo "<h2>".$tableauData[0]['titre']."</h2>";
                     echo "<h3>".$tableauData[0]['description']."</h3>";
                     echo "<div class='dateCreation'><p>".$tableauData[0]['dateCreation']."</p></div>";
@@ -41,10 +41,43 @@
                 $mysqli->close();
             ?>
         </div>
+        <div style="color:white;" id="message"></div>
+        <button onclick="updateNote()">MAJ</button>
+        <button onclick="verifNote()">Supprimer</button>
     </main>
 
     <footer>
     </footer>
+
+  <script>
+      function updateNote()
+      {
+        $('.tache').html("<input type='text' id='titre' placeholder='titre'><br>"+
+                          "<input type='text' id='description' placeholder='description'><br><button onclick='sendData()'>Ok</button>");
+      }
+
+      function verifNote()
+      {
+        $('#message').html("Etes vous sur de vouloir supprimer cette note ?<br><button onclick='deleteNote()'>Oui</button><br><button onclick='miseZero()'>Non</button>");
+      }
+
+      function deleteNote()
+      {
+        $.post("delete.php", 
+            {id: $('.tache').attr('id') });
+      }
+
+      function miseZero()
+      {
+        $('#message').html('');
+      }
+
+      function sendData()
+      {
+        $.post("data.php", 
+            {id: $('.tache').attr('id'), titre: $('#titre').val()  , description: $('#description').val() });
+      }
+  </script>
 
   </body>
 </html>
