@@ -42,7 +42,7 @@
             ?>
         </div>
         <div style="color:white;" id="message"></div>
-        <button onclick="updateNote()">MAJ</button>
+        <button onclick="updateNote('<?=$tableauData[0]['titre']?>','<?=$tableauData[0]['description']?>', '<?=$tableauData[0]['dateCreation']?>', '<?=$tableauData[0]['dateRappel']?>')">MAJ</button>
         <button onclick="verifNote()">Supprimer</button>
     </main>
 
@@ -50,10 +50,11 @@
     </footer>
 
   <script>
-      function updateNote()
+      function updateNote(titre, desc, dateC, dateR)
       {
-        $('.tache').html("<input type='text' id='titre' placeholder='titre'><br>"+
-                          "<input type='text' id='description' placeholder='description'><br><button onclick='sendData()'>Ok</button>");
+        $('.tache').html("<input type='text' id='titre' value='"+titre+"'><br>"+
+                          "<textarea id='description'>"+desc+"</textarea><br>"+
+                          "<input type='date' id='date' data='"+dateC+"' value='"+dateR+"'><br><button onclick='sendData()'>Ok</button>");
       }
 
       function verifNote()
@@ -74,8 +75,26 @@
 
       function sendData()
       {
+        let dateR = $('#date').val();
+
         $.post("data.php", 
-            {id: $('.tache').attr('id'), titre: $('#titre').val()  , description: $('#description').val() });
+            {
+              id: $('.tache').attr('id'),
+              titre: $('#titre').val(),
+              description: $('#description').val(),
+              dateC: $('#date').attr('data'),
+              dateR: dateR
+            },
+            function()
+            {
+              if (dateR)
+                dateR = "<div class='dateRappel'><p>Rappel : "+dateR+"</p></div>";
+                
+              $('.tache').html("<h2>"+$('#titre').val()+"</h2>"+
+                                "<h3>"+$('#description').val()+"</h3>"+
+                                "<div class='dateCreation'><p>"+$('#date').attr('data')+"</p></div>"+
+                                dateR);
+            });
       }
   </script>
 

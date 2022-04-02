@@ -27,12 +27,12 @@
               },
               function(data, status)
               {
-                $("#res").text(data);
+                //header("Location: /index1.php");
               }
           );
         }
         else
-          $("#res").text("Veuillez remplir les champs !");
+          $("#res").text("Veuillez mettre un titre !");
       }
 
       function myEpingle()
@@ -62,7 +62,6 @@
             </div>
 
             <br>
-            <button onclick="creerNote()">Créer</button>
 
             <input onclick="myEpingle()" type="checkbox" id="epingle" name="epingle">
             <label style="color:white;" for="epingle"> Epinglé cette note</label>
@@ -70,6 +69,9 @@
             <br><br>
             <label style="color:white;" for="dateRappel">Date rappel : </label>
             <input type='date' name="dateRappel" id='dateRappel'>
+            <br>
+            <br>
+            <button onclick="creerNote()">Créer</button>
 
             <div style="color:red;" id="res"></div>
 
